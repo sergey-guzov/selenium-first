@@ -11,13 +11,9 @@ import org.testng.annotations.BeforeMethod;
 
 import org.testng.annotations.Test;
 
-import java.util.logging.Logger;
-
 public class PasteBinSimpleTest {
 
     private WebDriver driver;
-    private static final Logger logger = Logger.getLogger(PasteBinSimpleTest.class.getName());
-
 
     @BeforeMethod(alwaysRun = true)
     public void browserSetup () {

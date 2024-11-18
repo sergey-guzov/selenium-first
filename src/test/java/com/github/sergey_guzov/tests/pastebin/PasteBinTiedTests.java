@@ -48,7 +48,7 @@ public class PasteBinTiedTests {
         Assert.assertTrue(expectedCode.equals(resultedCode), "Code in paste doesn't match with expected code");
     }
 
-    @Test(description = "Few lines code creation test")
+    @Test(description = "Page Title matches with paste name")
     public void pastePageTitleMatchesWithPasteTitle () {
 
         new PasteBinPastePage(driver, pasteBinPastePageUrl).openPage();

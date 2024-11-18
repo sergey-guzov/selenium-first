@@ -11,10 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class PasteBinPastePage extends PasteBinAbstractPage {
-    private static final Logger logger = Logger.getLogger(PasteBinPastePage.class.getName());
     private String url;
     @FindBys(@FindBy(xpath ="//div[@class='highlighted-code']//div[@class='de1']"))
     private List<WebElement> codeLines;
@@ -40,7 +38,7 @@ public class PasteBinPastePage extends PasteBinAbstractPage {
     public String getCodeOfPaste () {
 
         try {
-            new WebDriverWait(webDriver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(codeLines.get(0)));
+            new WebDriverWait(webDriver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfAllElements(codeLines.get(0)));
         } catch (IndexOutOfBoundsException e) {
             throw new RuntimeException("Paste is not created or code field is empty");
         }
@@ -57,10 +55,7 @@ public class PasteBinPastePage extends PasteBinAbstractPage {
     public boolean isSyntaxStyleElementExists (SyntaxHighlighting syntaxHighlighting) {
         String syntax = syntaxHighlighting.getSyntax().toLowerCase();
         String xpath = "//a[@href='/archive/" + syntax + "']";
-        logger.info(xpath);
         List<WebElement> elements = webDriver.findElements(By.xpath(xpath));
-        boolean result = elements.isEmpty();
-        logger.info(result + elements.toString());
         return !elements.isEmpty();
     }
 
